@@ -5,10 +5,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ZALNET.BeesQnA.QueueSender
@@ -17,12 +14,11 @@ namespace ZALNET.BeesQnA.QueueSender
     {
         [FunctionName("SendDataToQueue")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
             // Create a ServiceBusClient that will authenticate using a connection string
-            string connectionString = "";
+            string connectionString = "Endpoint=sb://zalnetbeesqna.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=HRoaeSHxSdGUKjuvkCdZn1ggWslGAm25nWumQS/lah8=";
             string queueName = "beesqna-queue";
             // since ServiceBusClient implements IAsyncDisposable we create it with "await using"
             await using var client = new ServiceBusClient(connectionString);

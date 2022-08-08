@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "ZALNET.BeesQnA.Receiver": {
+    "ZALNET.BeesQnA.QueueReceiver": {
       "commandName": "Project",
       "commandLineArgs": "host start --pause-on-error"
     }
